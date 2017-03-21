@@ -1,0 +1,33 @@
+﻿@model MusicApp2017.Models.Genre
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h3>Genre Details</h3>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Model.Name
+        </dd>
+        <dt>Albums in this Genre</dt>
+       
+       @foreach (var album in ViewBag.Albums)
+       {
+        <dd>
+            <a asp-Controller="Albums" asp-Action="Details" asp-route-id="@album.AlbumID">@album.Title</a>
+        </dd>
+       }
+
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.GenreID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

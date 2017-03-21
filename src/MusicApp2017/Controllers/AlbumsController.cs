@@ -15,7 +15,7 @@ namespace MusicApp2017.Controllers
 
         public AlbumsController(MusicDbContext context)
         {
-            _context = context;    
+            _context = context;
         }
 
         // GET: Albums
@@ -33,7 +33,7 @@ namespace MusicApp2017.Controllers
                 return NotFound();
             }
 
-            var albumContext =  _context.Albums
+            var albumContext = _context.Albums
                 .Include(a => a.Artist)
                 .Include(a => a.Genre);
             var album = await albumContext
@@ -60,7 +60,7 @@ namespace MusicApp2017.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("AlbumID,Title,ArtistID,GenreID,Likes")] Album album)
-        { 
+        {
             if (ModelState.IsValid)
             {
                 _context.Add(album);
