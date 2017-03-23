@@ -40,9 +40,10 @@ namespace MusicApp2017.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ArtistID,Name,Likes")] Artist artist)
+        public async Task<IActionResult> Create([Bind("ArtistID,Name,Bio,Likes")] Artist artist)
         {
-            if (ModelState.IsValid)
+            //checks for same name in database
+            if (ModelState.IsValid && !_context.Artists.Any(a => a.Name == artist.Name))
             {
                 _context.Add(artist);
                 await _context.SaveChangesAsync();
@@ -96,7 +97,7 @@ namespace MusicApp2017.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ArtistID,Name,Likes")] Artist artist)
+        public async Task<IActionResult> Edit(int id, [Bind("ArtistID,Name,Bio,Likes")] Artist artist)
         {
             if (id != artist.ArtistID)
             {

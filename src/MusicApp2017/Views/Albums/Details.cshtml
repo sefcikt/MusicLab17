@@ -21,6 +21,19 @@
         <dd>
             @Model.Artist.Name
         </dd>
+       @if (Model.Artist.Bio == null)
+       {
+
+       }
+       else
+       {
+           <dt>
+               @Html.DisplayNameFor(model => model.Artist.Bio)
+           </dt>
+           <dd>
+               @Model.Artist.Bio
+           </dd>
+       }
         <dt>
             @Html.DisplayNameFor(model => model.Genre)
         </dt>

@@ -23,7 +23,12 @@
                 <a asp-Controller="Albums" asp-Action="Details" asp-route-id="@album.AlbumID">@album.Title</a>
             </dd>
         }
-
+        <dt>
+            @Html.DisplayNameFor(model => model.Bio)
+        </dt>
+        <dd>
+            @Model.Bio
+        </dd>
 
     </dl>
 </div>

@@ -40,7 +40,8 @@ namespace MusicApp2017.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("GenreID,Likes,Name")] Genre genre)
         {
-            if (ModelState.IsValid)
+            //checks for any other name in database
+            if (ModelState.IsValid && !_context.Genres.Any(g => g.Name == genre.Name))
             {
                 _context.Add(genre);
                 await _context.SaveChangesAsync();
