@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MusicApp2017.Models;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace MusicApp2017.Controllers
 {
@@ -27,6 +27,7 @@ namespace MusicApp2017.Controllers
         }
 
         // GET: Genres/Create
+        [Authorize]
         public IActionResult Create()
         {
             //Nothing in here because genre only has a name and an ID
@@ -37,6 +38,7 @@ namespace MusicApp2017.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("GenreID,Likes,Name")] Genre genre)
         {
@@ -74,6 +76,7 @@ namespace MusicApp2017.Controllers
         }
 
         // GET: Genres/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -94,6 +97,7 @@ namespace MusicApp2017.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("GenreID,Likes,Name")] Genre genre)
         {
