@@ -134,6 +134,38 @@ namespace MusicApp2017.Controllers
             return View();
         }
 
+        
+        public async Task<IActionResult> Edit(string returnUrl)
+        {
+            var currentUser = await _userManager.GetUserAsync(User);
+            var edit = new EditViewModel { Email = currentUser.Email, FavoriteGenre = currentUser.FavoriteGenre };
+            ViewData["ReturnUrl"] = returnUrl;
+            ViewData["GenreID"] = new SelectList(_context.Genres, "GenreID", "Name");
+            return View(edit);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(EditViewModel model, string returnUrl)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            if (ModelState.IsValid)
+            {
+                var currentUser = await _userManager.GetUserAsync(User);
+                currentUser.FavoriteGenre = model.FavoriteGenre;
+                var succeeded = await _userManager.UpdateAsync(currentUser);
+            
+            if (succeeded.Succeeded)
+            {
+                await _signInManager.SignInAsync(currentUser, isPersistent: false);
+                return RedirectToLocal(returnUrl);
+            }
+            AddErrors(succeeded);
+        }
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
         #region Helpers
 
         private void AddErrors(IdentityResult result)
