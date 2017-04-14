@@ -1,15 +1,12 @@
 @model IEnumerable<MusicApp2017.Models.Album>
-@using Microsoft.AspNetCore.Identity
-@using MusicApp2017.Models
-
-@inject SignInManager<ApplicationUser> SignInManager
-@inject UserManager<ApplicationUser> UserManager
 
 @{
     ViewData["Title"] = "Index";
 }
 
 <h2>Albums Index</h2>
+
+<p>Favroite Genre: @ViewData["FavoriteGenre"]</p>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -53,54 +50,4 @@
 </table>
 
 <br />
-<br />
-
-@if (SignInManager.IsSignedIn(User))
-{
-    <h2>Favorite Genre: @ViewData["FavoriteGenreName"]</h2>
-
-    var favs = new List<Album>();
-
-    @foreach(var item in Model)
-    {
-      //  @if ()
-        //{
-          //      favs.Add(item);
-        //}
-
-    }
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Title)
-                </th>
-
-                <th>
-                    @Html.DisplayNameFor(model => model.Artist)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Genre)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in favs)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Artist.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Genre.Name)
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+<a class="btn-primary" asp-action="DisplayAllAlbums">Display All Albums</a>

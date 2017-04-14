@@ -25,6 +25,6 @@ namespace MusicApp2017.Models.AccountViewModels
         public string ConfirmPassword { get; set; }
 
         [Display(Name = "Favorite Genre")]
-        public Genre FavoriteGenre { get; set; }
+        public int FavoriteGenre { get; set; }
     }
 }
