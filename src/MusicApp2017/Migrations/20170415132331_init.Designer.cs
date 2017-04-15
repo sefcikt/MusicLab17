@@ -8,8 +8,8 @@ using MusicApp2017.Models;
 namespace MusicApp2017.Migrations
 {
     [DbContext(typeof(MusicDbContext))]
-    [Migration("20170413144411_update")]
-    partial class update
+    [Migration("20170415132331_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -159,6 +159,8 @@ namespace MusicApp2017.Migrations
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<int>("FavoriteGenre");
 
                     b.Property<bool>("LockoutEnabled");
 

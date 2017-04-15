@@ -28,14 +28,16 @@ namespace MusicApp2017.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 var user = await _userManager.GetUserAsync(User);
-                ViewData["FavoriteGenre"] = _context.Genres.SingleOrDefault(g => g.GenreID == user.FavoriteGenre).Name;
+                //can't find a way to pass the favorite genre   
+                //NullReferenceException: Object reference not set to an instance of an object.
+                //ViewData["FavoriteGenre"] = _context.Genres.SingleOrDefault(g => g.GenreID == user.FavoriteGenre).Name;
                 var musicDbContext = _context.Albums.Include(a => a.Artist).Include(a => a.Genre).Where(a => a.GenreID == user.FavoriteGenre);
                 return View(await musicDbContext.ToListAsync());
             }
             else
-            { 
+            {
                 var musicDbContext = _context.Albums.Include(a => a.Artist).Include(a => a.Genre);
-                return View(await musicDbContext.ToListAsync());
+                return View("DisplayAllAlbums", await musicDbContext.ToListAsync());
             }
         }
 
