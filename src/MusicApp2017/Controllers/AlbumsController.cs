@@ -30,7 +30,7 @@ namespace MusicApp2017.Controllers
                 var user = await _userManager.GetUserAsync(User);
                 //can't find a way to pass the favorite genre   
                 //NullReferenceException: Object reference not set to an instance of an object.
-                //ViewData["FavoriteGenre"] = _context.Genres.SingleOrDefault(g => g.GenreID == user.FavoriteGenre).Name;
+                ViewData["FavoriteGenre"] = _context.Genres.SingleOrDefault(g => g.GenreID == user.FavoriteGenre).Name;
                 var musicDbContext = _context.Albums.Include(a => a.Artist).Include(a => a.Genre).Where(a => a.GenreID == user.FavoriteGenre);
                 return View(await musicDbContext.ToListAsync());
             }

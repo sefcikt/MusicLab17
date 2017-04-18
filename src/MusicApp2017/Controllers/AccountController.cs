@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 using MusicApp2017.Models;
 using MusicApp2017.Models.AccountViewModels;
 using Microsoft.AspNetCore.Identity;
+using System;
 
 namespace MusicApp2017.Controllers
 {
