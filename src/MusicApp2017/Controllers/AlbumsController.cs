@@ -189,5 +189,51 @@ namespace MusicApp2017.Controllers
         {
             return _context.Albums.Any(e => e.AlbumID == id);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> SaveRating(int? id, Album album)
+        {
+            if (ModelState.IsValid)
+            {
+                var currentAlbum = await _context.Albums.SingleOrDefaultAsync(a => a.AlbumID == id);
+                var newRating = new Rating { AlbumID = id.Value, RatingNumber = album.Rating };
+                _context.Add(newRating);
+                await _context.SaveChangesAsync();
+
+                currentAlbum.Rating = AverageRating(newRating.AlbumID);
+
+                return View("Details", currentAlbum);
+            }
+            else
+            {
+                return View("Index");
+            }
+        }
+
+        private double AverageRating(int id)
+        {
+            if (_context.Rating.Where(a => a.AlbumID == id) != null)
+            {
+                var ratingAver = _context.Rating.Where(a => a.AlbumID == id).Average(r => r.RatingNumber);
+                return Math.Round(ratingAver, 1);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        private int NumberOfRatings(int id)
+        {
+            if (_context.Rating.Where(a => a.AlbumID == id) != null)
+            {
+                var number = _context.Rating.Count(a => a.AlbumID == id);
+                return number;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }

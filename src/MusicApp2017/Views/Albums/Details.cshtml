@@ -1,4 +1,7 @@
 @model MusicApp2017.Models.Album
+@inject UserManager<ApplicationUser> UserManager
+@using MusicApp2017.Models
+@using Microsoft.AspNetCore.Identity
 
 @{
     ViewData["Title"] = "Details";
@@ -21,27 +24,56 @@
         <dd>
             @Model.Artist.Name
         </dd>
-       @if (Model.Artist.Bio == null)
-       {
-
-       }
-       else
-       {
-           <dt>
-               @Html.DisplayNameFor(model => model.Artist.Bio)
-           </dt>
-           <dd>
-               @Model.Artist.Bio
-           </dd>
-       }
+        <dt>
+            @Html.DisplayNameFor(model => model.Artist.Bio)
+        </dt>
+        <dd>
+            @Model.Artist.Bio
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Genre)
         </dt>
         <dd>
             @Model.Genre.Name
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+        <dd>
+            @Model.Rating
+        </dd>
     </dl>
 </div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <form method="post" asp-controller="Albums" asp-action="SaveRating" asp-route-id="@Model.AlbumID">
+        <input type="hidden" asp-for="AlbumID"/>
+        <div class="form-group">
+            <label asp-for="Rating" class="col-md-2 control-label">Rating:</label>
+            <div class="col-md-10">
+                <select asp-for="RatingNumber" class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-default">Save</button>
+            </div>
+        </div>
+    </form>
+}
+else
+{
+    <a asp-controller="Account" asp-action="Login">Please log in to rate this album</a>
+}
+
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model.AlbumID">Edit</a> |
     <a asp-action="Index">Back to List</a>
