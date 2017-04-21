@@ -118,7 +118,7 @@ namespace MusicApp2017.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("AlbumID,Title,ArtistID,GenreID,Likes")] Album album)
         {
@@ -193,21 +193,18 @@ namespace MusicApp2017.Controllers
         [HttpPost]
         public async Task<IActionResult> SaveRating(int? id, Album album)
         {
-            if (ModelState.IsValid)
-            {
                 var currentAlbum = await _context.Albums.SingleOrDefaultAsync(a => a.AlbumID == id);
-                var newRating = new Rating { AlbumID = id.Value, RatingNumber = album.Rating };
+                var newRating = new Rating { AlbumID = id.Value, RatingNumber = album.RatingNumber };
                 _context.Add(newRating);
                 await _context.SaveChangesAsync();
 
-                currentAlbum.Rating = AverageRating(newRating.AlbumID);
+                currentAlbum.AverageRating = AverageRating(currentAlbum.AlbumID);
+            
 
-                return View("Details", currentAlbum);
-            }
-            else
-            {
-                return View("Index");
-            }
+                _context.Update(currentAlbum);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Index");
         }
 
         private double AverageRating(int id)

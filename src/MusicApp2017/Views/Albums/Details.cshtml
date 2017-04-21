@@ -37,10 +37,10 @@
             @Model.Genre.Name
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Rating)
+            @Html.DisplayNameFor(model => model.AverageRating)
         </dt>
         <dd>
-            @Model.Rating
+            @Model.AverageRating
         </dd>
     </dl>
 </div>
@@ -50,7 +50,7 @@
     <form method="post" asp-controller="Albums" asp-action="SaveRating" asp-route-id="@Model.AlbumID">
         <input type="hidden" asp-for="AlbumID"/>
         <div class="form-group">
-            <label asp-for="Rating" class="col-md-2 control-label">Rating:</label>
+            <label asp-for="RatingNumber" class="col-md-2 control-label">Rating:</label>
             <div class="col-md-10">
                 <select asp-for="RatingNumber" class="form-control">
                     <option>1</option>
@@ -72,7 +72,6 @@ else
 {
     <a asp-controller="Account" asp-action="Login">Please log in to rate this album</a>
 }
-
 
 <div>
     <a asp-action="Edit" asp-route-id="@Model.AlbumID">Edit</a> |
