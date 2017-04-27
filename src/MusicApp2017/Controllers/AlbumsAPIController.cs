@@ -24,7 +24,7 @@ namespace MusicApp2017.Controllers
         [HttpGet]
         public IEnumerable<Album> GetAlbums()
         {
-            return _context.Albums;
+            return _context.Albums.Include(a => a.Artist).Include(a => a.Genre);
         }
 
         // GET: api/AlbumsAPI/5
