@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MusicApp2017.Models;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -29,6 +30,7 @@ namespace MusicApp2017.Controllers
         }
 
         // GET: Artists/Create
+        [Authorize]
         public IActionResult Create()
         {
             
@@ -39,6 +41,7 @@ namespace MusicApp2017.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ArtistID,Name,Bio,Likes")] Artist artist)
         {
@@ -76,6 +79,7 @@ namespace MusicApp2017.Controllers
         }
 
         // GET: Artists/Edit/5
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -96,6 +100,7 @@ namespace MusicApp2017.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ArtistID,Name,Bio,Likes")] Artist artist)
         {
@@ -133,4 +138,5 @@ namespace MusicApp2017.Controllers
             return _context.Artists.Any(a => a.ArtistID == id);
         }
     }
+
 }

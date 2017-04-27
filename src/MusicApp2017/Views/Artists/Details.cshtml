@@ -15,20 +15,23 @@
         <dd>
             @Model.Name
         </dd>
-        <dt>Albums by this artist</dt>
-
-        @foreach (var album in ViewBag.Albums)
-        {
-            <dd>
-                <a asp-Controller="Albums" asp-Action="Details" asp-route-id="@album.AlbumID">@album.Title</a>
-            </dd>
-        }
+        
         <dt>
             @Html.DisplayNameFor(model => model.Bio)
         </dt>
         <dd>
             @Model.Bio
         </dd>
+
+        <dt>Albums by this artist</dt>
+        
+        @foreach (var album in ViewBag.Albums)
+        {
+            <dd>
+                <a asp-Controller="Albums" asp-Action="Details" asp-route-id="@album.AlbumID">@album.Title</a>
+            </dd>
+        }
+
 
     </dl>
 </div>

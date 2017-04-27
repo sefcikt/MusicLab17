@@ -6,15 +6,17 @@
 
 <h2>Albums Index</h2>
 
+<p>Favroite Genre: @ViewData["FavoriteGenre"]</p>
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Title)
-                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
 
             <th>
                 @Html.DisplayNameFor(model => model.Artist)
@@ -31,7 +33,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
-
+            <td>
+                @Html.DisplayFor(modelItem => item.Artist.Name)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Genre.Name)
             </td>
@@ -44,3 +48,6 @@
 }
     </tbody>
 </table>
+
+<br />
+<a class="btn-primary" asp-action="DisplayAllAlbums">Display All Albums</a>

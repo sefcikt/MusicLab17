@@ -8,9 +8,10 @@ using MusicApp2017.Models;
 namespace MusicApp2017.Migrations
 {
     [DbContext(typeof(MusicDbContext))]
-    partial class MusicDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170418143517_update2")]
+    partial class update2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
@@ -130,11 +131,7 @@ namespace MusicApp2017.Migrations
 
                     b.Property<int>("ArtistID");
 
-                    b.Property<double>("AverageRating");
-
                     b.Property<int>("GenreID");
-
-                    b.Property<double>("RatingNumber");
 
                     b.Property<string>("Title")
                         .IsRequired();
@@ -227,22 +224,6 @@ namespace MusicApp2017.Migrations
                     b.HasKey("GenreID");
 
                     b.ToTable("Genres");
-                });
-
-            modelBuilder.Entity("MusicApp2017.Models.Rating", b =>
-                {
-                    b.Property<int>("RatingID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AlbumID");
-
-                    b.Property<double>("RatingNumber");
-
-                    b.Property<string>("UserID");
-
-                    b.HasKey("RatingID");
-
-                    b.ToTable("Rating");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
