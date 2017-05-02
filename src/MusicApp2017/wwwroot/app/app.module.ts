@@ -9,10 +9,12 @@ import { NavMenuComponent } from './navmenu/navmenu.component';
 import { HomeComponent } from './home/home.component';
 
 
+
 @NgModule({
     imports: [BrowserModule, HttpModule, JsonpModule, FormsModule, RouterModule.forRoot([
         { path: '', redirectTo: 'home', pathMatch: 'full' },
         { path: 'home', component: HomeComponent },
+        { path: '**', redirectTo: 'home' }
     ])],
     declarations: [AppComponent, HomeComponent, NavMenuComponent],
     bootstrap: [AppComponent]
