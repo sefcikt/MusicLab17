@@ -8,9 +8,12 @@
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="wwwroot\app.component.js" />
-    <Content Include="wwwroot\app.component.js.map" />
-    <Content Include="wwwroot\app.component.ts" />
+    <Compile Remove="wwwroot\app\albums\**" />
+    <Content Remove="wwwroot\app\albums\**" />
+    <EmbeddedResource Remove="wwwroot\app\albums\**" />
+    <None Remove="wwwroot\app\albums\**" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="wwwroot\app\app.component.html" />
     <Content Include="wwwroot\app\app.component.js" />
     <Content Include="wwwroot\app\app.component.js.map" />
@@ -20,9 +23,6 @@
     <Content Include="wwwroot\app\home\home.component.js" />
     <Content Include="wwwroot\app\home\home.component.js.map" />
     <Content Include="wwwroot\app\home\home.component.ts" />
-    <Content Include="wwwroot\app\navmenu\app.component.js" />
-    <Content Include="wwwroot\app\navmenu\app.component.js.map" />
-    <Content Include="wwwroot\app\navmenu\app.component.ts" />
     <Content Include="wwwroot\app\navmenu\navmenu.component.css" />
     <Content Include="wwwroot\app\navmenu\navmenu.component.html" />
     <Content Include="wwwroot\app\navmenu\navmenu.component.js" />
@@ -30,6 +30,10 @@
     <Content Include="wwwroot\app\navmenu\navmenu.component.ts" />
     <Content Include="wwwroot\favicon.ico" />
     <Content Include="wwwroot\index.html" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
     <Content Include="wwwroot\main.ts" />
     <Content Include="wwwroot\package.json" />
     <Content Include="wwwroot\styles.css" />
@@ -38,9 +42,7 @@
     <Content Include="wwwroot\tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="1.1.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
@@ -48,7 +50,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.1" />
     <PackageReference Include="microsoft.entityframeworkcore.tools" Version="1.1.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.1.1" />
@@ -57,11 +58,12 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.1.1" />
     <PackageReference Include="microsoft.netcore.app" Version="1.1.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink.Loader" Version="14.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.0" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
+  </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0-msbuild3-final" />
   </ItemGroup>

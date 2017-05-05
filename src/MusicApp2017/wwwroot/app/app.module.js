@@ -11,8 +11,8 @@ var router_1 = require("@angular/router");
 var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
 var app_component_1 = require("./app.component");
-var home_component_1 = require("./home/home.component");
 var navmenu_component_1 = require("./navmenu/navmenu.component");
+var home_component_1 = require("./home/home.component");
 var AppModule = (function () {
     function AppModule() {
     }

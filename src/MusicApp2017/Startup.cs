@@ -36,8 +36,8 @@ namespace MusicApp2017
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<MusicDbContext>()
-                .AddDefaultTokenProviders();
+            .AddEntityFrameworkStores<MusicDbContext>()
+            .AddDefaultTokenProviders();
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -61,7 +61,7 @@ namespace MusicApp2017
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-               // app.UseBrowserLink();
+                app.UseBrowserLink();
             }
             else
             {
@@ -77,13 +77,13 @@ namespace MusicApp2017
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-
             app.Run(async context =>
             {
                 context.Response.StatusCode = 200;
                 context.Response.ContentType = "text/html";
                 await context.Response.SendFileAsync("./wwwroot/index.html");
             });
+
         }
     }
 }

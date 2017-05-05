@@ -5,8 +5,8 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { NavMenuComponent } from './navmenu/navmenu.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
     imports: [BrowserModule, HttpModule, JsonpModule, FormsModule, RouterModule.forRoot([
