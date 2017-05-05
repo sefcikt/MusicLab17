@@ -8,8 +8,26 @@
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="wwwroot\app.component.js" />
+    <Content Include="wwwroot\app.component.js.map" />
+    <Content Include="wwwroot\app.component.ts" />
+    <Content Include="wwwroot\app\app.component.html" />
+    <Content Include="wwwroot\app\app.component.js" />
+    <Content Include="wwwroot\app\app.component.js.map" />
     <Content Include="wwwroot\app\app.component.ts" />
     <Content Include="wwwroot\app\app.module.ts" />
+    <Content Include="wwwroot\app\home\home.component.html" />
+    <Content Include="wwwroot\app\home\home.component.js" />
+    <Content Include="wwwroot\app\home\home.component.js.map" />
+    <Content Include="wwwroot\app\home\home.component.ts" />
+    <Content Include="wwwroot\app\navmenu\app.component.js" />
+    <Content Include="wwwroot\app\navmenu\app.component.js.map" />
+    <Content Include="wwwroot\app\navmenu\app.component.ts" />
+    <Content Include="wwwroot\app\navmenu\navmenu.component.css" />
+    <Content Include="wwwroot\app\navmenu\navmenu.component.html" />
+    <Content Include="wwwroot\app\navmenu\navmenu.component.js" />
+    <Content Include="wwwroot\app\navmenu\navmenu.component.js.map" />
+    <Content Include="wwwroot\app\navmenu\navmenu.component.ts" />
     <Content Include="wwwroot\favicon.ico" />
     <Content Include="wwwroot\index.html" />
     <Content Include="wwwroot\main.ts" />
@@ -46,9 +64,5 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0-msbuild3-final" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\app\navmenu\" />
   </ItemGroup>
 </Project>

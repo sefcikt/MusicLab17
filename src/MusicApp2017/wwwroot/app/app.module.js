@@ -7,7 +7,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
+var router_1 = require("@angular/router");
+var http_1 = require("@angular/http");
+var forms_1 = require("@angular/forms");
 var app_component_1 = require("./app.component");
+var home_component_1 = require("./home/home.component");
+var navmenu_component_1 = require("./navmenu/navmenu.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -15,8 +20,12 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule],
-        declarations: [app_component_1.AppComponent],
+        imports: [platform_browser_1.BrowserModule, http_1.HttpModule, http_1.JsonpModule, forms_1.FormsModule, router_1.RouterModule.forRoot([
+                { path: '', redirectTo: 'home', pathMatch: 'full' },
+                { path: 'home', component: home_component_1.HomeComponent },
+                { path: '**', redirectTo: 'home' }
+            ])],
+        declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, navmenu_component_1.NavMenuComponent],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);
