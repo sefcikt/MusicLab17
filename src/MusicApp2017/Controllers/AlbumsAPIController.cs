@@ -10,7 +10,7 @@ using MusicApp2017.Models;
 namespace MusicApp2017.Controllers
 {
     [Produces("application/json")]
-    [Route("api/AlbumsAPI")]
+    [Route("api/albums")]
     public class AlbumsAPIController : Controller
     {
         private readonly MusicDbContext _context;
