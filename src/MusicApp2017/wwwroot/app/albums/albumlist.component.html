@@ -1,0 +1,25 @@
+﻿<h1>Albums List</h1>
+<p *ngIf="!albums"><em>Loading albums...</em></p>
+<div *ngIf="albums">
+    <table class='table' *ngIf="albums">
+        <thead>
+            <tr>
+                <th>Album Title</th>
+                <th>Artist</th>
+                <th>Genre</th>
+                <th>Average Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let album of albums">
+                <td [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/album', album.albumID]">{{ album.title }} </a>
+                </td>
+                <td>{{album.artist.name}}</td>
+                <td>{{album.genre.name}}</td>
+                <td *ngIf="album.averageRating != 0">{{album.averageRating}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<addalbum></addalbum>

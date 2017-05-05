@@ -17,7 +17,11 @@
                         <span class='glyphicon glyphicon-home'></span> Home
                     </a>
                 </li>
-                
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/album']">
+                        <span class='glyphicon glyphicon-th-list'></span> Albums
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
